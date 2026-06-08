@@ -1,0 +1,123 @@
+[gd_scene format=3 uid="uid://2o2vwamf1toi"]
+
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://dx2xbjatosuss" path="res://scenes/components/mixer/mixer.tscn" id="2_0wfyh"]
+
+[node name="Main" type="Control" unique_id=1500914989]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_o5qli")
+
+[node name="TopBar" type="Control" parent="." unique_id=1747932768]
+z_index = 99
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TopBar" unique_id=345784106]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopBar/MarginContainer" unique_id=444950738]
+layout_mode = 2
+
+[node name="FileMenuButton" type="MenuButton" parent="TopBar/MarginContainer/HBoxContainer" unique_id=2108743202]
+layout_mode = 2
+text = "File"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Open"
+popup/item_0/id = 0
+popup/item_1/text = "Save"
+popup/item_1/id = 1
+popup/item_2/text = "Save As"
+popup/item_2/id = 2
+
+[node name="SettingsMenuButton" type="MenuButton" parent="TopBar/MarginContainer/HBoxContainer" unique_id=1257660403]
+layout_mode = 2
+text = "Settings"
+switch_on_hover = true
+item_count = 2
+popup/item_0/text = "idk"
+popup/item_0/id = 0
+popup/item_1/text = "fportnmie"
+popup/item_1/id = 1
+
+[node name="VSeparator" type="VSeparator" parent="TopBar/MarginContainer/HBoxContainer" unique_id=115182461]
+layout_mode = 2
+
+[node name="BPMHBoxContainer" type="HBoxContainer" parent="TopBar/MarginContainer/HBoxContainer" unique_id=1128456513]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BPMLabel" type="Label" parent="TopBar/MarginContainer/HBoxContainer/BPMHBoxContainer" unique_id=458961784]
+layout_mode = 2
+text = "BPM: "
+
+[node name="SpinBox" type="SpinBox" parent="TopBar/MarginContainer/HBoxContainer/BPMHBoxContainer" unique_id=149138461]
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+value = 120.0
+allow_greater = true
+
+[node name="Button" type="Button" parent="TopBar/MarginContainer/HBoxContainer/BPMHBoxContainer" unique_id=779414421]
+layout_mode = 2
+text = "Tap"
+
+[node name="ColorRect" type="ColorRect" parent="TopBar" unique_id=125812071]
+z_index = -9
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="SideBar" type="Control" parent="." unique_id=852598986]
+z_index = 49
+layout_mode = 1
+anchor_bottom = 1.0
+offset_top = 64.0
+offset_right = 192.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SideBar" unique_id=1566746542]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tree" type="Tree" parent="SideBar/MarginContainer" unique_id=306868190]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="SideBar" unique_id=815962520]
+z_index = -9
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+
+[node name="Mixer" parent="." unique_id=959594576 instance=ExtResource("2_0wfyh")]
+layout_mode = 1
+anchor_top = 1.0
+offset_left = 192.0
+offset_top = -320.0

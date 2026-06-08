@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://cgu3ouyxr1jv5"]
+
+[ext_resource type="Script" uid="uid://b12slerhy6o6e" path="res://scripts/mixer/mixer_track.gd" id="1_5ev4m"]
+[ext_resource type="Script" uid="uid://cpk85ve353mwu" path="res://scripts/range.gd" id="2_kveca"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5qli"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0wfyh"]
+bg_color = Color(0.20784314, 0.9254902, 0.78039217, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o5qli"]
+font_size = 8
+
+[node name="MixerTrack" type="Control" unique_id=1629868016]
+z_index = 9
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_5ev4m")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1746956430]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=528073817]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer" unique_id=1021248890]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "*Enter Name*"
+alignment = 1
+flat = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1820941294]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 1
+
+[node name="SoloButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1238865767]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Solo"
+toggle_mode = true
+text = "S"
+
+[node name="MuteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=116845483]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+tooltip_text = "Mute"
+toggle_mode = true
+text = "M"
+
+[node name="MenuButton" type="MenuButton" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1721640231]
+layout_mode = 2
+text = ":"
+item_count = 3
+popup/item_0/text = "Reset Volume"
+popup/item_0/id = 0
+popup/item_1/text = "Duplicate Mixer Track"
+popup/item_1/id = 1
+popup/item_2/text = "Delete Mixer Track"
+popup/item_2/id = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer" unique_id=1121747830]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=667164139]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="VolumeSlider" type="VSlider" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1844086875]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_default_cursor_shape = 2
+min_value = -44.0
+max_value = 6.0
+script = ExtResource("2_kveca")
+
+[node name="AudioMeter" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=639309343]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="ColorRect" parent="MarginContainer/VBoxContainer/HBoxContainer2/AudioMeter" unique_id=1346701217]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+color = Color(0.27450982, 0.54509807, 0.7411765, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/HBoxContainer2/AudioMeter" unique_id=2131891496]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_o5qli")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0wfyh")
+min_value = -72.0
+max_value = 6.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=608982575]
+layout_mode = 2
+text = "+6db
+-0db
+-6db
+-12db
+-18db
+-24db
+-32db
+-38db
+-44db"
+label_settings = SubResource("LabelSettings_o5qli")
+
+[node name="TrackNumberLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=137103962]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1."
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=287227444]
+z_index = -9
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[connection signal="text_changed" from="MarginContainer/VBoxContainer/LineEdit" to="." method="set_mixer_track_name"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" to="MarginContainer/VBoxContainer/HBoxContainer2/VolumeSlider" method="_on_mouse_exited"]

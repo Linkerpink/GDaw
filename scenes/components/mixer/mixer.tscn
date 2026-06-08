@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://dx2xbjatosuss"]
+
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_0bocn"]
+[ext_resource type="PackedScene" uid="uid://cgu3ouyxr1jv5" path="res://scenes/components/mixer/mixer_track.tscn" id="2_2f5jo"]
+[ext_resource type="Script" uid="uid://cdtvky1dccufk" path="res://scripts/mixer/mixer.gd" id="2_h74qa"]
+[ext_resource type="PackedScene" uid="uid://c1mns6fqsnib7" path="res://scenes/components/mixer/mixer_effect_track.tscn" id="3_o6gue"]
+
+[node name="Mixer" type="Control" unique_id=959594576]
+z_index = 99
+custom_minimum_size = Vector2(0, 320)
+layout_mode = 3
+anchor_top = 0.605
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 63.95999
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_0bocn")
+script = ExtResource("2_h74qa")
+mixer_track_scene = ExtResource("2_2f5jo")
+effect_track_scene = ExtResource("3_o6gue")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=252232068]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=533439118]
+layout_mode = 2
+alignment = 2
+
+[node name="MixerTrackScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer" unique_id=453471716]
+layout_mode = 2
+size_flags_horizontal = 3
+scroll_hint_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/MixerTrackScrollContainer" unique_id=1036852558]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MixerTrackScrollContainer/MarginContainer" unique_id=2007478100]
+layout_mode = 2
+
+[node name="MasterMixerTrack" parent="MarginContainer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer" unique_id=1629868016 instance=ExtResource("2_2f5jo")]
+layout_mode = 2
+track_type = 0
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer" unique_id=542023745]
+layout_mode = 2
+
+[node name="MixerTrackContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer" unique_id=2132375952]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MixerTrack" parent="MarginContainer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer/MixerTrackContainer" unique_id=1381944135 instance=ExtResource("2_2f5jo")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=1499323123]
+layout_mode = 2
+
+[node name="EffectTrackScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer" unique_id=1559683854]
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+follow_focus = true
+scroll_hint_mode = 1
+
+[node name="EffectTrackContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/EffectTrackScrollContainer" unique_id=1726047233]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Effect Track" parent="MarginContainer/HBoxContainer/EffectTrackScrollContainer/EffectTrackContainer" unique_id=1637742747 instance=ExtResource("3_o6gue")]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=484908418]
+z_index = -9
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)

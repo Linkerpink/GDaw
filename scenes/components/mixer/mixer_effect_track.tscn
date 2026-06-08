@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://c1mns6fqsnib7"]
+
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_wrtey"]
+[ext_resource type="Script" uid="uid://blo3fn0g1fk31" path="res://scripts/mixer/mixer_effect_track.gd" id="2_kfwe7"]
+
+[node name="MixerEffectTrack" type="VBoxContainer" unique_id=1637742747]
+theme = ExtResource("1_wrtey")
+script = ExtResource("2_kfwe7")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=2060855060]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 2
+
+[node name="MenuButton" type="MenuButton" parent="HBoxContainer" unique_id=425635355]
+unique_name_in_owner = true
+layout_mode = 2
+text = "1. Effect Track"
+item_count = 2
+popup/item_0/text = "Add Effect Track"
+popup/item_0/id = 1
+popup/item_1/text = "Remove Effect Track"
+popup/item_1/id = 0
+
+[node name="Button" type="Button" parent="HBoxContainer" unique_id=227611946]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "-"
+
+[node name="Button2" type="Button" parent="HBoxContainer" unique_id=1300641849]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+text = "+"
+
+[node name="HSeparator" type="HSeparator" parent="." unique_id=1285200590]
+layout_mode = 2
