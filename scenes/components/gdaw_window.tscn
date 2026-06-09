@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://b5jn4fveoyo2e"]
+
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_5bgr1"]
+[ext_resource type="Script" uid="uid://c40cy8rsdcuuf" path="res://scripts/gdaw_window.gd" id="2_70iy5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mfhug"]
+bg_color = Color(0.16078432, 0.16078432, 0.16078432, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[node name="GDawWindow" type="Control" unique_id=361502912]
+self_modulate = Color(1, 1, 1, 0)
+z_index = 999
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_5bgr1")
+script = ExtResource("2_70iy5")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1701107619]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TopBar" type="Control" parent="VBoxContainer" unique_id=1735951669]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+mouse_default_cursor_shape = 6
+
+[node name="TopBarPanel" type="Panel" parent="VBoxContainer/TopBar" unique_id=1659944551]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TopBar" unique_id=708441059]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TitleLabel" type="RichTextLabel" parent="VBoxContainer/TopBar/HBoxContainer" unique_id=1285560719]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+bbcode_enabled = true
+text = "Window Title"
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="VBoxContainer/TopBar/HBoxContainer" unique_id=322774772]
+custom_minimum_size = Vector2(24, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "X"
+
+[node name="WindowContent" type="Control" parent="VBoxContainer" unique_id=1700798872]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="Panel" type="Panel" parent="." unique_id=1058703408]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_mfhug")
+
+[connection signal="mouse_entered" from="VBoxContainer/TopBar" to="." method="_on_top_bar_mouse_entered"]
+[connection signal="mouse_exited" from="VBoxContainer/TopBar" to="." method="_on_top_bar_mouse_exited"]
+[connection signal="pressed" from="VBoxContainer/TopBar/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]

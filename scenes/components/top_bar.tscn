@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://bnw2t4wgigodx"]
+
+[ext_resource type="Script" uid="uid://bu2t5fk1om2hi" path="res://scripts/bpm_manager.gd" id="1_tmikl"]
+
+[node name="TopBar" type="Control" unique_id=13979123]
+z_index = 99
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 64.0
+grow_horizontal = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=591494368]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=672212110]
+layout_mode = 2
+
+[node name="FileMenuButton" type="MenuButton" parent="MarginContainer/HBoxContainer" unique_id=947676876]
+layout_mode = 2
+text = "File"
+switch_on_hover = true
+item_count = 3
+popup/item_0/text = "Open"
+popup/item_0/id = 0
+popup/item_1/text = "Save"
+popup/item_1/id = 1
+popup/item_2/text = "Save As"
+popup/item_2/id = 2
+
+[node name="SettingsMenuButton" type="MenuButton" parent="MarginContainer/HBoxContainer" unique_id=1244588619]
+layout_mode = 2
+text = "Settings"
+switch_on_hover = true
+item_count = 2
+popup/item_0/text = "idk"
+popup/item_0/id = 0
+popup/item_1/text = "fportnmie"
+popup/item_1/id = 1
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=1256680915]
+layout_mode = 2
+
+[node name="BPMManager" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1278210067]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("1_tmikl")
+
+[node name="BPMMenuButton" type="MenuButton" parent="MarginContainer/HBoxContainer/BPMManager" unique_id=576305063]
+layout_mode = 2
+button_mask = 2
+text = "BPM: "
+item_count = 1
+popup/item_0/text = "Tap"
+popup/item_0/id = 0
+
+[node name="SpinBox" type="SpinBox" parent="MarginContainer/HBoxContainer/BPMManager" unique_id=1933432828]
+layout_mode = 2
+min_value = 1.0
+max_value = 9999.0
+value = 120.0
+allow_greater = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1897078788]
+z_index = -9
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.16078432, 0.16078432, 0.16078432, 1)

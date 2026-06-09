@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dqctoo4vaukky"]
+
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_xl268"]
+[ext_resource type="Script" uid="uid://ngf4s2s2tsl7" path="res://scripts/tap_bpm_window.gd" id="2_0e48n"]
+
+[node name="TapBPMWindow" type="Window" unique_id=12900090]
+oversampling_override = 1.0
+title = "Tap BPM"
+position = Vector2i(276, 96)
+size = Vector2i(128, 128)
+theme = ExtResource("1_xl268")
+script = ExtResource("2_0e48n")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=575335481]
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="TapButton" type="Button" parent="MarginContainer" unique_id=2081564860]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Tap"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]

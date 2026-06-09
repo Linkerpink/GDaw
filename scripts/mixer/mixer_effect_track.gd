@@ -8,7 +8,6 @@ class_name MixerEffectTrack
 @export_range(-1,1) var effect_panning : float = 0.0
 
 @onready var menu_button : MenuButton = %MenuButton
-@onready var track_number_label : Label = %TrackNumberLabel
 
 var track_effect : AudioEffect
 

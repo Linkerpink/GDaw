@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cgu3ouyxr1jv5"]
 
 [ext_resource type="Script" uid="uid://b12slerhy6o6e" path="res://scripts/mixer/mixer_track.gd" id="1_5ev4m"]
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_o3apg"]
 [ext_resource type="Script" uid="uid://cpk85ve353mwu" path="res://scripts/range.gd" id="2_kveca"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5qli"]
@@ -13,9 +14,10 @@ font_size = 8
 
 [node name="MixerTrack" type="Control" unique_id=1629868016]
 z_index = 9
-custom_minimum_size = Vector2(128, 0)
+custom_minimum_size = Vector2(96, 0)
 layout_mode = 3
 anchors_preset = 0
+theme = ExtResource("1_o3apg")
 script = ExtResource("1_5ev4m")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1746956430]
@@ -37,19 +39,19 @@ alignment = 1
 flat = true
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1820941294]
-custom_minimum_size = Vector2(0, 32)
+custom_minimum_size = Vector2(0, 16)
 layout_mode = 2
 alignment = 1
 
 [node name="SoloButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1238865767]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 tooltip_text = "Solo"
 toggle_mode = true
 text = "S"
 
 [node name="MuteButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=116845483]
-custom_minimum_size = Vector2(32, 0)
+custom_minimum_size = Vector2(24, 0)
 layout_mode = 2
 tooltip_text = "Mute"
 toggle_mode = true
@@ -115,13 +117,10 @@ show_percentage = false
 layout_mode = 2
 text = "+6db
 -0db
--6db
 -12db
--18db
 -24db
 -32db
--38db
--44db"
+-48db"
 label_settings = SubResource("LabelSettings_o5qli")
 
 [node name="TrackNumberLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=137103962]
