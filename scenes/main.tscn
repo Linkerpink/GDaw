@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_o5qli"]
 [ext_resource type="PackedScene" uid="uid://dx2xbjatosuss" path="res://scenes/components/mixer/mixer.tscn" id="2_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://bnw2t4wgigodx" path="res://scenes/components/top_bar.tscn" id="2_jyhfs"]
+[ext_resource type="PackedScene" uid="uid://b5jn4fveoyo2e" path="res://scenes/components/gdaw_window.tscn" id="2_tbgi4"]
 [ext_resource type="Script" uid="uid://dtf4chd1fen7e" path="res://scripts/main.gd" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bg6jf7lbovbkd" path="res://scenes/components/side_bar.tscn" id="3_tbgi4"]
 
@@ -24,6 +25,33 @@ layout_mode = 1
 
 [node name="Mixer" parent="." unique_id=959594576 instance=ExtResource("2_0wfyh")]
 layout_mode = 1
-anchor_left = 0.16700001
-offset_left = -0.38401794
+offset_left = 192.0
 offset_top = -0.040008545
+
+[node name="GDawWindow" parent="." unique_id=361502912 instance=ExtResource("2_tbgi4")]
+layout_mode = 1
+title = "Window 1"
+
+[node name="GDawWindow2" parent="." unique_id=363162894 instance=ExtResource("2_tbgi4")]
+layout_mode = 1
+offset_left = 104.0
+offset_top = -177.0
+offset_right = 232.0
+offset_bottom = -49.0
+title = "Window 2"
+
+[node name="GDawWindow3" parent="." unique_id=1026934417 instance=ExtResource("2_tbgi4")]
+layout_mode = 1
+offset_left = 261.0
+offset_top = -189.0
+offset_right = 389.0
+offset_bottom = -61.0
+title = "Window 3"
+
+[node name="GDawWindow4" parent="." unique_id=1709248758 instance=ExtResource("2_tbgi4")]
+layout_mode = 1
+offset_left = -281.0
+offset_top = -178.0
+offset_right = -153.0
+offset_bottom = -50.0
+title = "Window 4"
