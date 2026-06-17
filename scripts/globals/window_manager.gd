@@ -6,7 +6,6 @@ var touching_window_selected : bool
 
 
 func _process(_delta: float) -> void:
-	print(window_selected)
 	if window_selected:
 		if window_selected.get_local_mouse_position().x > 0 and window_selected.get_local_mouse_position().x < window_selected.size.x and window_selected.get_local_mouse_position().y > 0 and window_selected.get_local_mouse_position().y < window_selected.size.y:
 			touching_window_selected = true

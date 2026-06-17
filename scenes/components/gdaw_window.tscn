@@ -92,6 +92,122 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_mfhug")
 
+[node name="ResizeBars" type="Control" parent="." unique_id=647093522]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ResizeBarTop" type="ColorRect" parent="ResizeBars" unique_id=349923842]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+mouse_default_cursor_shape = 9
+color = Color(1, 1, 1, 0)
+
+[node name="ResizeBarLeft" type="ColorRect" parent="ResizeBars" unique_id=1796962457]
+layout_mode = 1
+anchors_preset = -1
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_right = 4.0
+grow_vertical = 2
+mouse_default_cursor_shape = 10
+color = Color(1, 1, 1, 0)
+
+[node name="ResizeBarRight" type="ColorRect" parent="ResizeBars" unique_id=118605711]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.008
+anchor_right = 1.008
+anchor_bottom = 1.0
+offset_left = -4.024002
+offset_right = 3.975998
+grow_horizontal = 0
+grow_vertical = 2
+mouse_default_cursor_shape = 10
+color = Color(1, 1, 1, 0)
+
+[node name="ResizeBarBottom" type="ColorRect" parent="ResizeBars" unique_id=854014084]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.031
+anchor_right = 1.0
+anchor_bottom = 1.031
+offset_top = -7.9680023
+offset_bottom = 0.03199768
+grow_horizontal = 2
+grow_vertical = 0
+mouse_default_cursor_shape = 9
+color = Color(1, 1, 1, 0)
+
+[node name="ResizeBarTopLeft" type="ColorRect" parent="ResizeBars" unique_id=2039678455]
+layout_mode = 1
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+mouse_default_cursor_shape = 12
+color = Color(1, 1, 1, 0)
+
+[node name="ResizeBarBottomLeft" type="ColorRect" parent="ResizeBars" unique_id=826983973]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_vertical = 0
+mouse_default_cursor_shape = 11
+color = Color(1, 1, 1, 0)
+
+[node name="ResizeBarTopRight" type="ColorRect" parent="ResizeBars" unique_id=1841333030]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.008
+anchor_right = 1.008
+offset_left = -4.024002
+offset_top = -4.0
+offset_right = 3.975998
+offset_bottom = 4.0
+mouse_default_cursor_shape = 11
+color = Color(1, 1, 1, 0)
+
+[node name="ResizeBarBottomRight" type="ColorRect" parent="ResizeBars" unique_id=1344362453]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.008
+anchor_top = 1.0
+anchor_right = 1.008
+anchor_bottom = 1.0
+offset_left = -4.024002
+offset_top = -4.0
+offset_right = 3.975998
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 12
+color = Color(1, 1, 1, 0)
+
 [connection signal="mouse_entered" from="MarginContainer/VBoxContainer/TopBar" to="." method="_on_top_bar_mouse_entered"]
 [connection signal="mouse_exited" from="MarginContainer/VBoxContainer/TopBar" to="." method="_on_top_bar_mouse_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/TopBar/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarTop" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarTop"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarTop" to="." method="_on_resize_bar_mouse_exited"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarLeft" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarLeft"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarLeft" to="." method="_on_resize_bar_mouse_exited"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarRight" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarRight"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarRight" to="." method="_on_resize_bar_mouse_exited"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarBottom" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarBottom"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarBottom" to="." method="_on_resize_bar_mouse_exited"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarTopLeft" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarTopLeft"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarTopLeft" to="." method="_on_resize_bar_mouse_exited"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarBottomLeft" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarBottomLeft"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarBottomLeft" to="." method="_on_resize_bar_mouse_exited"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarTopRight" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarTopRight"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarTopRight" to="." method="_on_resize_bar_mouse_exited"]
+[connection signal="mouse_entered" from="ResizeBars/ResizeBarBottomRight" to="." method="_on_resize_bar_mouse_entered" binds= ["ResizeBarBottomRight"]]
+[connection signal="mouse_exited" from="ResizeBars/ResizeBarBottomRight" to="." method="_on_resize_bar_mouse_exited"]

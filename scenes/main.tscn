@@ -31,27 +31,3 @@ offset_top = -0.040008545
 [node name="GDawWindow" parent="." unique_id=361502912 instance=ExtResource("2_tbgi4")]
 layout_mode = 1
 title = "Window 1"
-
-[node name="GDawWindow2" parent="." unique_id=363162894 instance=ExtResource("2_tbgi4")]
-layout_mode = 1
-offset_left = 104.0
-offset_top = -177.0
-offset_right = 232.0
-offset_bottom = -49.0
-title = "Window 2"
-
-[node name="GDawWindow3" parent="." unique_id=1026934417 instance=ExtResource("2_tbgi4")]
-layout_mode = 1
-offset_left = 261.0
-offset_top = -189.0
-offset_right = 389.0
-offset_bottom = -61.0
-title = "Window 3"
-
-[node name="GDawWindow4" parent="." unique_id=1709248758 instance=ExtResource("2_tbgi4")]
-layout_mode = 1
-offset_left = -281.0
-offset_top = -178.0
-offset_right = -153.0
-offset_bottom = -50.0
-title = "Window 4"

@@ -12,15 +12,30 @@ var touching_top_bar : bool = false
 var dragging : bool = false
 var drag_point : Vector2
 
+var resize_bar_touching : String
+var resize_bar_dragging : String
+var resizing : bool = false
+
+@onready var resize_bar_top : Control = $ResizeBars/ResizeBarTop
+@onready var resize_bar_left : Control = $ResizeBars/ResizeBarLeft
+@onready var resize_bar_right : Control = $ResizeBars/ResizeBarRight
+@onready var resize_bar_bottom : Control = $ResizeBars/ResizeBarBottom
+@onready var resize_bar_top_left : Control = $ResizeBars/ResizeBarTopLeft
+@onready var resize_bar_bottom_left : Control = $ResizeBars/ResizeBarBottomLeft
+@onready var resize_bar_top_right : Control = $ResizeBars/ResizeBarTopRight
+@onready var resize_bar_bottom_right : Control = $ResizeBars/ResizeBarBottomRight
+
 
 func _ready() -> void:
 	title_label.text = title
+	
 	WindowManager.open_window(self)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	_handle_selection()
 	_handle_dragging()
+	_handle_resizing(delta)
 	
 	# Close input
 	if Input.is_action_just_pressed("close_window") and WindowManager.window_selected == self:
@@ -33,7 +48,9 @@ func _process(_delta: float) -> void:
 
 func _handle_selection():
 	# Selection
-	if get_local_mouse_position().x > 0 and get_local_mouse_position().x < size.x and get_local_mouse_position().y > 0 and get_local_mouse_position().y < size.y:
+	if resize_bar_touching != "":
+		touching_window = true
+	elif get_local_mouse_position().x > 0 and get_local_mouse_position().x < size.x and get_local_mouse_position().y > 0 and get_local_mouse_position().y < size.y:
 		touching_window = true
 	else:
 		touching_window = false
@@ -49,7 +66,6 @@ func _handle_selection():
 	
 	if WindowManager.window_selected == self:
 		top_bar_panel.self_modulate = Color.WHITE
-		owner.move_child(self, -1)
 		z_index = 999
 	else:
 		top_bar_panel.self_modulate = Color.DIM_GRAY
@@ -78,6 +94,87 @@ func _handle_dragging():
 		global_position = get_global_mouse_position() - drag_point
 
 
+func _handle_resizing(delta: float):
+	if Input.is_action_just_pressed("left_click"):
+		if resize_bar_touching != "":
+			resizing = true
+			resize_bar_dragging = resize_bar_touching
+	
+	if Input.is_action_just_released("left_click"):
+		resize_bar_dragging = ""
+		resizing = false
+	
+	#TODO fix resizing too far for one frame in the resizebarleft
+	if resizing:
+		match resize_bar_dragging:
+			"ResizeBarTop":
+				if get_local_mouse_position().y < 0 and get_global_mouse_position().y > 0:
+					size.y -= get_local_mouse_position().y
+					position.y = get_global_mouse_position().y
+				elif get_local_mouse_position().y > 0 and size.y != get_custom_minimum_size().y:
+					size.y -= get_local_mouse_position().y
+					position.y = get_global_mouse_position().y - get_local_mouse_position().y / size.y / 2
+			
+			"ResizeBarLeft":
+				if get_local_mouse_position().x < 0 and get_global_mouse_position().x > 0:
+					size.x -= get_local_mouse_position().x
+					position.x = get_global_mouse_position().x
+				elif get_local_mouse_position().x > 0 and size.x != get_custom_minimum_size().x:
+					size.x -= get_local_mouse_position().x
+					position.x = get_global_mouse_position().x - get_local_mouse_position().x / size.x / 2
+			
+			"ResizeBarRight":
+				if get_local_mouse_position().x < DisplayServer.window_get_size().x and get_global_mouse_position().x < DisplayServer.window_get_size().x:
+					size.x = get_local_mouse_position().x
+			
+			"ResizeBarBottom":
+				if get_global_mouse_position().y < DisplayServer.window_get_size().y:
+					size.y = get_local_mouse_position().y
+			
+			"ResizeBarTopLeft":
+				if get_local_mouse_position().x < 0 and get_global_mouse_position().x > 0:
+					size.x -= get_local_mouse_position().x
+					position.x = get_global_mouse_position().x
+				elif get_local_mouse_position().x > 0 and size.x != get_custom_minimum_size().x:
+					size.x -= get_local_mouse_position().x
+					position.x = get_global_mouse_position().x - get_local_mouse_position().x / size.x / 2
+				
+				if get_local_mouse_position().y < 0 and get_global_mouse_position().y > 0:
+					size.y -= get_local_mouse_position().y
+					position.y = get_global_mouse_position().y
+				elif get_local_mouse_position().y > 0 and size.y != get_custom_minimum_size().y:
+					size.y -= get_local_mouse_position().y
+					position.y = get_global_mouse_position().y - get_local_mouse_position().y / size.y / 2
+			
+			"ResizeBarBottomLeft":
+				if get_local_mouse_position().x < 0 and get_global_mouse_position().x > 0:
+					size.x -= get_local_mouse_position().x
+					position.x = get_global_mouse_position().x
+				elif get_local_mouse_position().x > 0 and size.x != get_custom_minimum_size().x:
+					size.x -= get_local_mouse_position().x
+					position.x = get_global_mouse_position().x - get_local_mouse_position().x / size.x / 2
+				
+				if get_global_mouse_position().y < DisplayServer.window_get_size().y:
+					size.y = get_local_mouse_position().y
+			
+			"ResizeBarTopRight":
+				if get_local_mouse_position().x < DisplayServer.window_get_size().x and get_global_mouse_position().x < DisplayServer.window_get_size().x:
+					size.x = get_local_mouse_position().x
+				
+				if get_local_mouse_position().y < 0 and get_global_mouse_position().y > 0:
+					size.y -= get_local_mouse_position().y
+					position.y = get_global_mouse_position().y
+				elif get_local_mouse_position().y > 0 and size.y != get_custom_minimum_size().y:
+					size.y -= get_local_mouse_position().y
+					position.y = get_global_mouse_position().y - get_local_mouse_position().y / size.y / 2
+			
+			"ResizeBarBottomRight":
+				if get_local_mouse_position().x < DisplayServer.window_get_size().x and get_global_mouse_position().x < DisplayServer.window_get_size().x:
+					size.x = get_local_mouse_position().x
+				if get_global_mouse_position().y < DisplayServer.window_get_size().y:
+					size.y = get_local_mouse_position().y
+
+
 func close_window():
 	pivot_offset = size / 2
 	var _a_tween = get_tree().create_tween()
@@ -101,3 +198,12 @@ func _on_top_bar_mouse_exited() -> void:
 
 func _on_close_button_pressed() -> void:
 	close_window()
+
+
+func _on_resize_bar_mouse_entered(_name : String):
+	if not resizing:
+		resize_bar_touching = _name
+
+
+func _on_resize_bar_mouse_exited() -> void:
+	resize_bar_touching = ""
