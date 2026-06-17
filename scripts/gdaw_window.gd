@@ -2,7 +2,6 @@ extends Control
 class_name GDawWindow
 
 @export var title : String = "Window"
-@export var exclusive : bool = false
 
 @onready var title_label : RichTextLabel = %TitleLabel
 @onready var top_bar : Control = %TopBar
@@ -182,7 +181,6 @@ func _open_window():
 	
 	WindowManager.open_window(self)
 	
-	pivot_offset = size / 2
 	var _a_tween = get_tree().create_tween()
 	
 	_a_tween.tween_property(self, "modulate:a", 1, Settings.default_animation_length / Settings.animation_speed)
@@ -223,7 +221,3 @@ func _on_resize_bar_mouse_entered(_name : String):
 
 func _on_resize_bar_mouse_exited() -> void:
 	resize_bar_touching = ""
-
-
-func _on_reset_button_pressed() -> void:
-	pass # Replace with function body.

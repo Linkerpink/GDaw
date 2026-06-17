@@ -1,6 +1,6 @@
 extends Control
 
-@onready var bpm_label : Label = $MarginContainer/VBoxContainer/BPMLabel
+@onready var bpm_label : Label = %BPMLabel
 var bpm_before_tapping : float
 
 

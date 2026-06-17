@@ -7,7 +7,7 @@ func _process(_delta: float) -> void:
 	if touching_mouse:
 		if Input.is_action_just_pressed("reset_value"):
 			var _tween = get_tree().create_tween()
-			_tween.tween_property(self, "value", 0, Settings.animation_length)
+			_tween.tween_property(self, "value", 0, Settings.default_animation_length * Settings.animation_speed)
 
 
 func _on_mouse_entered() -> void:

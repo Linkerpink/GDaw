@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dx2xbjatosuss"]
 
 [ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_0bocn"]
-[ext_resource type="PackedScene" uid="uid://cgu3ouyxr1jv5" path="res://scenes/components/mixer/mixer_track.tscn" id="2_2f5jo"]
+[ext_resource type="PackedScene" uid="uid://cgu3ouyxr1jv5" path="res://scenes/components/windows/mixer/mixer_track.tscn" id="2_2f5jo"]
 [ext_resource type="Script" uid="uid://cdtvky1dccufk" path="res://scripts/mixer/mixer.gd" id="2_h74qa"]
-[ext_resource type="PackedScene" uid="uid://c1mns6fqsnib7" path="res://scenes/components/mixer/mixer_effect_track.tscn" id="3_o6gue"]
+[ext_resource type="PackedScene" uid="uid://c1mns6fqsnib7" path="res://scenes/components/windows/mixer/mixer_effect_track.tscn" id="3_o6gue"]
 
 [node name="Mixer" type="Control" unique_id=959594576]
 z_index = 99

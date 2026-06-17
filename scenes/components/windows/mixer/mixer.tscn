@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://c6h8pn3bo6qd6"]
+
+[ext_resource type="PackedScene" uid="uid://b5jn4fveoyo2e" path="res://scenes/components/windows/gdaw_window.tscn" id="1_wf5si"]
+[ext_resource type="Script" uid="uid://cdtvky1dccufk" path="res://scripts/mixer/mixer.gd" id="2_0juxi"]
+[ext_resource type="PackedScene" uid="uid://cgu3ouyxr1jv5" path="res://scenes/components/windows/mixer/mixer_track.tscn" id="2_vb1bl"]
+[ext_resource type="PackedScene" uid="uid://c1mns6fqsnib7" path="res://scenes/components/windows/mixer/mixer_effect_track.tscn" id="3_0juxi"]
+
+[node name="MixerWindow" unique_id=390925715 groups=["mixer"] instance=ExtResource("1_wf5si")]
+custom_minimum_size = Vector2(340, 256)
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -960.0
+offset_top = -256.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+grow_vertical = 0
+title = "Mixer"
+
+[node name="Mixer" type="Control" parent="MarginContainer/VBoxContainer/WindowContent" parent_id_path=PackedInt32Array(1096486190) index="0" unique_id=453439525]
+layout_mode = 2
+script = ExtResource("2_0juxi")
+mixer_track_scene = ExtResource("2_vb1bl")
+effect_track_scene = ExtResource("3_0juxi")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/Mixer" index="0" unique_id=222931737]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 2
+
+[node name="MixerTrackScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer" index="0" unique_id=1985960320]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 3
+scroll_hint_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/MixerTrackScrollContainer" index="0" unique_id=1844882844]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/MixerTrackScrollContainer/MarginContainer" index="0" unique_id=1461143990]
+clip_contents = true
+layout_mode = 2
+
+[node name="MasterMixerTrack" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer" index="0" unique_id=1629868016 instance=ExtResource("2_vb1bl")]
+layout_mode = 2
+track_type = 0
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer" index="1" unique_id=1214487753]
+layout_mode = 2
+
+[node name="MixerTrackContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer" index="2" unique_id=1461249690]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MixerTrack" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/MixerTrackScrollContainer/MarginContainer/HBoxContainer/MixerTrackContainer" index="0" unique_id=1229930481 instance=ExtResource("2_vb1bl")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer" index="1" unique_id=2001061153]
+layout_mode = 2
+
+[node name="EffectTrackScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer" index="2" unique_id=960451456]
+custom_minimum_size = Vector2(208, 0)
+layout_mode = 2
+follow_focus = true
+scroll_hint_mode = 1
+
+[node name="EffectTrackContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/EffectTrackScrollContainer" index="0" unique_id=1996485861]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="Effect Track" parent="MarginContainer/VBoxContainer/WindowContent/Mixer/HBoxContainer/EffectTrackScrollContainer/EffectTrackContainer" index="0" unique_id=1637742747 instance=ExtResource("3_0juxi")]
+layout_mode = 2

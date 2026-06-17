@@ -13,14 +13,6 @@ func _ready() -> void:
 	_set_new_mixer()
 
 
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("toggle_mixer"):
-		if visible:
-			hide()
-		else:
-			show()
-
-
 func _set_new_mixer():
 	_clear_mixer()
 	

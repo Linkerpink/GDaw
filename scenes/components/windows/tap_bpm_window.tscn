@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cesnjcjwwpawj"]
 
-[ext_resource type="PackedScene" uid="uid://b5jn4fveoyo2e" path="res://scenes/components/gdaw_window.tscn" id="1_jgdu2"]
+[ext_resource type="PackedScene" uid="uid://b5jn4fveoyo2e" path="res://scenes/components/windows/gdaw_window.tscn" id="1_jgdu2"]
 [ext_resource type="Script" uid="uid://e1n7yinld8xc" path="res://scripts/windows/bpm_tapper.gd" id="2_tccyd"]
 
 [node name="TapBPMWindow" unique_id=390925715 instance=ExtResource("1_jgdu2")]
@@ -8,26 +8,24 @@ custom_minimum_size = Vector2(256, 256)
 title = "Tap BPM"
 exclusive = true
 
-[node name="WindowContent" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1701107619) index="1" unique_id=1700798872]
+[node name="WindowContent" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1701107619) index="1" unique_id=1096486190]
 script = ExtResource("2_tccyd")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/MarginContainer" parent_id_path=PackedInt32Array(1096486190) index="0" unique_id=1223077894]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent" index="0" unique_id=1223077894]
 layout_mode = 2
 alignment = 1
 
-[node name="BPMLabel" type="Label" parent="MarginContainer/VBoxContainer/WindowContent/MarginContainer/VBoxContainer" index="0" unique_id=2123133594]
+[node name="BPMLabel" type="Label" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer" index="0" unique_id=2123133594]
+unique_name_in_owner = true
 layout_mode = 2
 text = "BPM: "
 horizontal_alignment = 1
 
-[node name="TapButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/MarginContainer/VBoxContainer" index="1" unique_id=1134859751]
+[node name="TapButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer" index="1" unique_id=1134859751]
 layout_mode = 2
 size_flags_vertical = 3
 text = "TAP"
 
-[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/MarginContainer/VBoxContainer" index="2" unique_id=1057191168]
+[node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer" index="2" unique_id=1057191168]
 layout_mode = 2
 text = "reset"
-
-[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowContent/MarginContainer/VBoxContainer/TapButton" to="MarginContainer/VBoxContainer/WindowContent" method="_tap_bpm"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowContent/MarginContainer/VBoxContainer/ResetButton" to="MarginContainer/VBoxContainer/WindowContent" method="_on_reset_button_pressed"]
