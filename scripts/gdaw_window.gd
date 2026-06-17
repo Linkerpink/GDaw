@@ -2,6 +2,7 @@ extends Control
 class_name GDawWindow
 
 @export var title : String = "Window"
+@export var exclusive : bool = false
 
 @onready var title_label : RichTextLabel = %TitleLabel
 @onready var top_bar : Control = %TopBar
@@ -29,7 +30,7 @@ var resizing : bool = false
 func _ready() -> void:
 	title_label.text = title
 	
-	WindowManager.open_window(self)
+	_open_window()
 
 
 func _process(delta: float) -> void:
@@ -175,15 +176,30 @@ func _handle_resizing(delta: float):
 					size.y = get_local_mouse_position().y
 
 
+func _open_window():
+	modulate.a = 0
+	scale = Vector2(.75, .75)
+	
+	WindowManager.open_window(self)
+	
+	pivot_offset = size / 2
+	var _a_tween = get_tree().create_tween()
+	
+	_a_tween.tween_property(self, "modulate:a", 1, Settings.default_animation_length / Settings.animation_speed)
+	
+	var _s_tween = get_tree().create_tween()
+	_s_tween.tween_property(self, "scale", Vector2(1, 1), Settings.default_animation_length / Settings.animation_speed)
+
+
 func close_window():
 	pivot_offset = size / 2
 	var _a_tween = get_tree().create_tween()
-	_a_tween.tween_property(self, "modulate:a", 0, Settings.animation_length)
+	_a_tween.tween_property(self, "modulate:a", 0, Settings.default_animation_length / Settings.animation_speed)
 	
 	var _s_tween = get_tree().create_tween()
-	_s_tween.tween_property(self, "scale", Vector2(0.75, 0.75), Settings.animation_length)
+	_s_tween.tween_property(self, "scale", Vector2(0.75, 0.75), Settings.default_animation_length / Settings.animation_speed)
 	
-	await get_tree().create_timer(Settings.animation_length).timeout
+	await get_tree().create_timer(Settings.default_animation_length / Settings.animation_speed).timeout
 	WindowManager.close_window(self)
 	queue_free()
 
@@ -207,3 +223,7 @@ func _on_resize_bar_mouse_entered(_name : String):
 
 func _on_resize_bar_mouse_exited() -> void:
 	resize_bar_touching = ""
+
+
+func _on_reset_button_pressed() -> void:
+	pass # Replace with function body.

@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bnw2t4wgigodx"]
 
-[ext_resource type="Script" uid="uid://bu2t5fk1om2hi" path="res://scripts/bpm_manager.gd" id="1_tmikl"]
+[ext_resource type="Script" uid="uid://bu2t5fk1om2hi" path="res://scripts/windows/bpm_manager.gd" id="1_tmikl"]
+[ext_resource type="PackedScene" uid="uid://cesnjcjwwpawj" path="res://scenes/components/windows/tap_bpm_window.tscn" id="2_tmikl"]
 
 [node name="TopBar" type="Control" unique_id=13979123]
 z_index = 99
@@ -50,11 +51,13 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_tmikl")
+tap_bpm_window_packed = ExtResource("2_tmikl")
 
 [node name="BPMMenuButton" type="MenuButton" parent="MarginContainer/HBoxContainer/BPMManager" unique_id=576305063]
 layout_mode = 2
-button_mask = 2
+button_mask = 3
 text = "BPM: "
+switch_on_hover = true
 item_count = 1
 popup/item_0/text = "Tap"
 popup/item_0/id = 0

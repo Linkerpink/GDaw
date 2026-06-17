@@ -13,6 +13,11 @@ func _process(_delta: float) -> void:
 			touching_window_selected = false
 
 
+func create_window(_window_packed : PackedScene):
+	var _window : GDawWindow = _window_packed.instantiate()
+	get_tree().current_scene.add_child(_window)
+
+
 func open_window(_window : GDawWindow):
 	windows_open.append(_window)
 	select_window(_window)

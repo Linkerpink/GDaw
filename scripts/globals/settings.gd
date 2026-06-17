@@ -1,4 +1,4 @@
 extends Node
 
-
-var animation_length = .125
+var default_animation_length = .125
+var animation_speed = 1
