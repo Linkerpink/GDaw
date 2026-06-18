@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://hgihcnctl0k1"]
+
+[node name="Control" type="Control" unique_id=1124445307]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Shortcuts" type="SplitContainer" parent="." unique_id=355754314]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_tab_index = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Shortcuts" unique_id=1953449840]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VSplitContainer" parent="Shortcuts/ScrollContainer" unique_id=879587620]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+split_offsets = PackedInt32Array(0, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Shortcuts/ScrollContainer/VBoxContainer" unique_id=1271590480]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=1530438029]
+layout_mode = 2
+text = "Preset: "
+
+[node name="OptionButton" type="OptionButton" parent="Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=946594414]
+layout_mode = 2
+selected = 0
+item_count = 1
+popup/item_0/text = "GDaw Default"
+popup/item_0/id = 0
+
+[node name="Save As Button" type="Button" parent="Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=62614360]
+layout_mode = 2
+text = "Save As..."
+
+[node name="Delete Button" type="Button" parent="Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" unique_id=782074527]
+layout_mode = 2
+text = "Delete"
+
+[node name="Keys" type="Control" parent="Shortcuts/ScrollContainer/VBoxContainer" unique_id=899016578]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Command Selection" type="HBoxContainer" parent="Shortcuts/ScrollContainer/VBoxContainer" unique_id=771931861]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection" unique_id=807762846]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Search" type="HBoxContainer" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer" unique_id=685393342]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/Search" unique_id=1138563093]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/Search" unique_id=2127443408]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+placeholder_text = "search..."
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer" unique_id=86937820]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer" unique_id=1856118150]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=2130372385]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "shortcut"
+
+[node name="Button2" type="Button" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1983466384]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "shortcut"
+
+[node name="Button3" type="Button" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1860351198]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "shortcut"
+
+[node name="Button4" type="Button" parent="Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" unique_id=1480739445]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+text = "shortcut"

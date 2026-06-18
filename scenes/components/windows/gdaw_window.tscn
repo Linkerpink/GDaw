@@ -2,6 +2,13 @@
 
 [ext_resource type="Script" uid="uid://c40cy8rsdcuuf" path="res://scripts/gdaw_window.gd" id="2_70iy5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tj176"]
+bg_color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
 [node name="GDawWindow" type="PanelContainer" unique_id=390925715]
 self_modulate = Color(1, 1, 1, 0)
 z_index = 999
@@ -76,11 +83,11 @@ text = "X"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="WindowBackground" type="ColorRect" parent="." unique_id=1945695097]
+[node name="WindowBackground" type="Panel" parent="." unique_id=1465028763]
 z_index = -1
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.12156863, 0.12156863, 0.12156863, 1)
+theme_override_styles/panel = SubResource("StyleBoxFlat_tj176")
 
 [node name="ResizeBars" type="Control" parent="." unique_id=647093522]
 layout_mode = 2
@@ -89,9 +96,11 @@ mouse_filter = 2
 [node name="ResizeBarTop" type="ColorRect" parent="ResizeBars" unique_id=349923842]
 layout_mode = 1
 anchors_preset = -1
-anchor_right = 1.0
-offset_top = -4.0
-offset_bottom = 4.0
+anchor_right = 1.008
+offset_left = 6.0
+offset_top = -6.0
+offset_right = -6.024002
+offset_bottom = 6.0
 grow_horizontal = 2
 mouse_default_cursor_shape = 9
 color = Color(1, 1, 1, 0)
@@ -100,8 +109,10 @@ color = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_right = 4.0
+offset_left = -6.0
+offset_top = 6.0
+offset_right = 6.0
+offset_bottom = -6.0
 grow_vertical = 2
 mouse_default_cursor_shape = 10
 color = Color(1, 1, 1, 0)
@@ -112,8 +123,10 @@ anchors_preset = -1
 anchor_left = 1.008
 anchor_right = 1.008
 anchor_bottom = 1.0
-offset_left = -4.024002
-offset_right = 3.975998
+offset_left = -6.024002
+offset_top = 6.0
+offset_right = 5.975998
+offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 2
 mouse_default_cursor_shape = 10
@@ -122,11 +135,13 @@ color = Color(1, 1, 1, 0)
 [node name="ResizeBarBottom" type="ColorRect" parent="ResizeBars" unique_id=854014084]
 layout_mode = 1
 anchors_preset = -1
-anchor_top = 1.031
-anchor_right = 1.0
-anchor_bottom = 1.031
-offset_top = -7.9680023
-offset_bottom = 0.03199768
+anchor_top = 1.0
+anchor_right = 1.0090001
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -6.0
+offset_right = -6.152008
+offset_bottom = 6.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_default_cursor_shape = 9
@@ -134,10 +149,10 @@ color = Color(1, 1, 1, 0)
 
 [node name="ResizeBarTopLeft" type="ColorRect" parent="ResizeBars" unique_id=2039678455]
 layout_mode = 1
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
 mouse_default_cursor_shape = 12
 color = Color(1, 1, 1, 0)
 
@@ -146,10 +161,10 @@ layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -6.0
+offset_top = -6.0
+offset_right = 6.0
+offset_bottom = 6.0
 grow_vertical = 0
 mouse_default_cursor_shape = 11
 color = Color(1, 1, 1, 0)
@@ -159,10 +174,10 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 1.008
 anchor_right = 1.008
-offset_left = -4.024002
-offset_top = -4.0
-offset_right = 3.975998
-offset_bottom = 4.0
+offset_left = -6.024002
+offset_top = -6.0
+offset_right = 5.975998
+offset_bottom = 6.0
 mouse_default_cursor_shape = 11
 color = Color(1, 1, 1, 0)
 
@@ -173,10 +188,10 @@ anchor_left = 1.008
 anchor_top = 1.0
 anchor_right = 1.008
 anchor_bottom = 1.0
-offset_left = -4.024002
-offset_top = -4.0
-offset_right = 3.975998
-offset_bottom = 4.0
+offset_left = -6.024002
+offset_top = -6.0
+offset_right = 5.975998
+offset_bottom = 6.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 12

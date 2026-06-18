@@ -2,9 +2,18 @@ extends Node
 
 var settings_dict : Dictionary
 
+# General
 var projects_path = OS.get_environment("USERPROFILE") + "/Documents"
+
+# Audio
+var input_device : String
+var output_device : String
+
+# Video
 var default_animation_length = .125
 var animation_speed = 1
+
+# Shortcuts
 
 
 func _ready() -> void:

@@ -31,17 +31,15 @@ func _process(_delta: float) -> void:
 func _on_item_pressed(_id):
 	var _item_name = get_popup().get_item_text(_id)
 	
-	if _item_name == "New":
-		print("new")
-	
-	if _item_name == "Open":
-		open_open_file_window()
-	
-	if _item_name == "Save":
-		open_save_window()
-	
-	if _item_name == "Save As":
-		open_save_window()
+	match _item_name:
+		"New":
+			print("new")
+		"Open":
+			open_open_file_window()
+		"Save":
+			open_save_window()
+		"Save As":
+			open_save_window()
 
 
 func open_open_file_window():

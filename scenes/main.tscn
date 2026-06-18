@@ -20,3 +20,4 @@ layout_mode = 1
 
 [node name="SideBar" parent="." unique_id=633303047 instance=ExtResource("3_tbgi4")]
 layout_mode = 1
+offset_top = 48.0
