@@ -1,10 +1,9 @@
 [gd_scene format=3 uid="uid://2o2vwamf1toi"]
 
-[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_o5qli"]
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/gdaw theme/gdaw.tres" id="1_jyhfs"]
 [ext_resource type="PackedScene" uid="uid://bnw2t4wgigodx" path="res://scenes/components/top_bar.tscn" id="2_jyhfs"]
 [ext_resource type="Script" uid="uid://dtf4chd1fen7e" path="res://scripts/main.gd" id="2_tefeu"]
 [ext_resource type="PackedScene" uid="uid://bg6jf7lbovbkd" path="res://scenes/components/side_bar.tscn" id="3_tbgi4"]
-[ext_resource type="PackedScene" uid="uid://c6h8pn3bo6qd6" path="res://scenes/components/windows/mixer/mixer.tscn" id="5_tbgi4"]
 
 [node name="Main" type="Control" unique_id=1500914989 groups=["main"]]
 layout_mode = 3
@@ -13,14 +12,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_o5qli")
+theme = ExtResource("1_jyhfs")
 script = ExtResource("2_tefeu")
 
 [node name="TopBar" parent="." unique_id=13979123 instance=ExtResource("2_jyhfs")]
 layout_mode = 1
 
 [node name="SideBar" parent="." unique_id=633303047 instance=ExtResource("3_tbgi4")]
-layout_mode = 1
-
-[node name="MixerWindow" parent="." unique_id=390925715 instance=ExtResource("5_tbgi4")]
 layout_mode = 1

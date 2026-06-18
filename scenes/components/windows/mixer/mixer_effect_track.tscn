@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c1mns6fqsnib7"]
 
-[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_wrtey"]
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/gdaw theme/gdaw.tres" id="1_wrtey"]
 [ext_resource type="Script" uid="uid://blo3fn0g1fk31" path="res://scripts/mixer/mixer_effect_track.gd" id="2_kfwe7"]
 
 [node name="MixerEffectTrack" type="VBoxContainer" unique_id=1637742747]

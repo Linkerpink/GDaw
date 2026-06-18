@@ -20,7 +20,7 @@ grow_vertical = 2
 [node name="Tree" type="Tree" parent="MarginContainer" unique_id=2037824023]
 layout_mode = 2
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1107279396]
+[node name="Panel" type="Panel" parent="." unique_id=431437084]
 z_index = -9
 layout_mode = 1
 anchors_preset = 15
@@ -29,4 +29,3 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.16078432, 0.16078432, 0.16078432, 1)

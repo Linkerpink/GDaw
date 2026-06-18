@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cgu3ouyxr1jv5"]
 
 [ext_resource type="Script" uid="uid://b12slerhy6o6e" path="res://scripts/mixer/mixer_track.gd" id="1_5ev4m"]
-[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/main.tres" id="1_o3apg"]
 [ext_resource type="Script" uid="uid://cpk85ve353mwu" path="res://scripts/range.gd" id="2_kveca"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5qli"]
@@ -15,7 +14,6 @@ custom_minimum_size = Vector2(96, 0)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 96.0
-theme = ExtResource("1_o3apg")
 script = ExtResource("1_5ev4m")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1746956430]

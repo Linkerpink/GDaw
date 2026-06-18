@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 		
 		if mixer_window:
 			WindowManager.select_window(mixer_window)
+			mixer_window.show()
 		else:
 			WindowManager.create_window(mixer_window_packed)
 	#endregion
