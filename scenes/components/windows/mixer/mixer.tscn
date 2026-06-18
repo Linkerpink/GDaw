@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://c6h8pn3bo6qd6"]
 
 [ext_resource type="PackedScene" uid="uid://b5jn4fveoyo2e" path="res://scenes/components/windows/gdaw_window.tscn" id="1_wf5si"]
-[ext_resource type="Script" uid="uid://cdtvky1dccufk" path="res://scripts/mixer/mixer.gd" id="2_0juxi"]
+[ext_resource type="Script" uid="uid://cdtvky1dccufk" path="res://scripts/windows/mixer/mixer.gd" id="2_0juxi"]
+[ext_resource type="Theme" uid="uid://b7okgf2wmsia1" path="res://themes/gdaw theme/gdaw.tres" id="2_cfcuc"]
 [ext_resource type="PackedScene" uid="uid://cgu3ouyxr1jv5" path="res://scenes/components/windows/mixer/mixer_track.tscn" id="2_vb1bl"]
 [ext_resource type="PackedScene" uid="uid://c1mns6fqsnib7" path="res://scenes/components/windows/mixer/mixer_effect_track.tscn" id="3_0juxi"]
 
@@ -18,6 +19,7 @@ offset_right = 0.0
 offset_bottom = 0.0
 grow_horizontal = 0
 grow_vertical = 0
+theme = ExtResource("2_cfcuc")
 title = "Mixer"
 
 [node name="Mixer" type="Control" parent="MarginContainer/VBoxContainer/WindowContent" parent_id_path=PackedInt32Array(1096486190) index="0" unique_id=453439525]

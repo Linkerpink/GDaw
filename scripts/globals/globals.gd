@@ -8,7 +8,7 @@ func _ready() -> void:
 	get_window().min_size = min_screen_size
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	#region Shortcuts
 	# Mixer
 	if Input.is_action_just_pressed("toggle_mixer"):

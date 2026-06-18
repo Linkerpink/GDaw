@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cgu3ouyxr1jv5"]
 
-[ext_resource type="Script" uid="uid://b12slerhy6o6e" path="res://scripts/mixer/mixer_track.gd" id="1_5ev4m"]
+[ext_resource type="Script" uid="uid://b12slerhy6o6e" path="res://scripts/windows/mixer/mixer_track.gd" id="1_5ev4m"]
 [ext_resource type="Script" uid="uid://cpk85ve353mwu" path="res://scripts/range.gd" id="2_kveca"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_o5qli"]

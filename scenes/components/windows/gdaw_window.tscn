@@ -76,10 +76,11 @@ text = "X"
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="WindowBackground" type="Panel" parent="." unique_id=1058703408]
+[node name="WindowBackground" type="ColorRect" parent="." unique_id=1945695097]
 z_index = -1
 layout_mode = 2
 mouse_filter = 2
+color = Color(0.12156863, 0.12156863, 0.12156863, 1)
 
 [node name="ResizeBars" type="Control" parent="." unique_id=647093522]
 layout_mode = 2

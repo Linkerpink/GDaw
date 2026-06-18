@@ -178,6 +178,7 @@ func _handle_resizing(delta: float):
 func _open_window():
 	modulate.a = 0
 	scale = Vector2(.75, .75)
+	#pivot_offset = size / 2
 	
 	WindowManager.open_window(self)
 	
@@ -190,7 +191,7 @@ func _open_window():
 
 
 func close_window():
-	pivot_offset = size / 2
+	#pivot_offset = size / 2
 	var _a_tween = get_tree().create_tween()
 	_a_tween.tween_property(self, "modulate:a", 0, Settings.default_animation_length / Settings.animation_speed)
 	
