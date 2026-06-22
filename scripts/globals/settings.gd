@@ -12,6 +12,7 @@ var output_device : String
 # Video
 var default_animation_length = .125
 var animation_speed = 1
+var reduced_motion : bool = false
 
 # Shortcuts
 
@@ -26,7 +27,12 @@ func _ready() -> void:
 func save_settings():
 	settings_dict = {
 		"projects_path" : projects_path,
+		
+		"input_device" : input_device,
+		"output_device" : output_device,
+		
 		"animation_speed" : animation_speed,
+		"reduced_motion" : reduced_motion,
 	}
 	
 	var settings_file = FileAccess.open("user://settings.sav", FileAccess.WRITE)
@@ -52,4 +58,9 @@ func load_settings():
 	settings_dict = json.data
 	
 	projects_path = settings_dict["projects_path"]
+	
+	input_device = settings_dict["input_device"]
+	output_device = settings_dict["output_device"]
+	
 	animation_speed = settings_dict["animation_speed"]
+	reduced_motion = settings_dict["reduced_motion"]

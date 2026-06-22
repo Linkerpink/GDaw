@@ -28,7 +28,6 @@ var resizing : bool = false
 
 func _ready() -> void:
 	title_label.text = title
-	
 	_open_window()
 
 
@@ -42,8 +41,8 @@ func _process(delta: float) -> void:
 		close_window()
 	
 	# Clamp window inside of the program
-	global_position.x = clamp(global_position.x, 0, DisplayServer.window_get_size().x - size.x)
-	global_position.y = clamp(global_position.y, 0, DisplayServer.window_get_size().y - size.y)
+	global_position.x = clamp(global_position.x, 0, DisplayServer.window_get_size().x)
+	global_position.y = clamp(global_position.y, 0, DisplayServer.window_get_size().y)
 
 
 func _handle_selection():
@@ -94,7 +93,7 @@ func _handle_dragging():
 		global_position = get_global_mouse_position() - drag_point
 
 
-func _handle_resizing(delta: float):
+func _handle_resizing(_delta: float):
 	if Input.is_action_just_pressed("left_click"):
 		if resize_bar_touching != "":
 			resizing = true
@@ -182,23 +181,29 @@ func _open_window():
 	
 	WindowManager.open_window(self)
 	
-	var _a_tween = get_tree().create_tween()
-	
-	_a_tween.tween_property(self, "modulate:a", 1, Settings.default_animation_length / Settings.animation_speed)
-	
-	var _s_tween = get_tree().create_tween()
-	_s_tween.tween_property(self, "scale", Vector2(1, 1), Settings.default_animation_length / Settings.animation_speed)
+	if not Settings.reduced_motion:
+		var _a_tween = get_tree().create_tween()
+		
+		_a_tween.tween_property(self, "modulate:a", 1, Settings.default_animation_length / Settings.animation_speed)
+		
+		var _s_tween = get_tree().create_tween()
+		_s_tween.tween_property(self, "scale", Vector2(1, 1), Settings.default_animation_length / Settings.animation_speed)
+	else:
+		modulate.a = 1
+		scale = Vector2.ONE
 
 
 func close_window():
-	#pivot_offset = size / 2
-	var _a_tween = get_tree().create_tween()
-	_a_tween.tween_property(self, "modulate:a", 0, Settings.default_animation_length / Settings.animation_speed)
+	if not Settings.reduced_motion:
+		#pivot_offset = size / 2
+		var _a_tween = get_tree().create_tween()
+		_a_tween.tween_property(self, "modulate:a", 0, Settings.default_animation_length / Settings.animation_speed)
+		
+		var _s_tween = get_tree().create_tween()
+		_s_tween.tween_property(self, "scale", Vector2(0.75, 0.75), Settings.default_animation_length / Settings.animation_speed)
+		
+		await get_tree().create_timer(Settings.default_animation_length / Settings.animation_speed).timeout
 	
-	var _s_tween = get_tree().create_tween()
-	_s_tween.tween_property(self, "scale", Vector2(0.75, 0.75), Settings.default_animation_length / Settings.animation_speed)
-	
-	await get_tree().create_timer(Settings.default_animation_length / Settings.animation_speed).timeout
 	WindowManager.close_window(self)
 	queue_free()
 

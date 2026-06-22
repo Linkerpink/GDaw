@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://bnmnpv8yr85af"]
 
 [ext_resource type="PackedScene" uid="uid://b5jn4fveoyo2e" path="res://scenes/components/windows/gdaw_window.tscn" id="1_bbthu"]
+[ext_resource type="Script" uid="uid://r44agevfb81s" path="res://scripts/windows/settings_ui.gd" id="2_bf7wd"]
+[ext_resource type="Script" uid="uid://cpk85ve353mwu" path="res://scripts/range.gd" id="3_g42fq"]
 
 [node name="SettingsWindow" unique_id=390925715 groups=["settings"] instance=ExtResource("1_bbthu")]
 custom_minimum_size = Vector2(640, 360)
@@ -10,742 +12,858 @@ offset_right = 480.0
 offset_bottom = 270.0
 title = "Settings"
 
-[node name="TabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/WindowContent" parent_id_path=PackedInt32Array(1096486190) index="0" unique_id=98601139]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent" parent_id_path=PackedInt32Array(1096486190) index="0" unique_id=354690783]
 layout_mode = 2
-current_tab = 2
 
-[node name="General" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer" index="1" unique_id=1402061007]
+[node name="SettingsTabContainer" type="TabContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer" index="0" unique_id=98601139]
+layout_mode = 2
+size_flags_vertical = 3
+current_tab = 2
+script = ExtResource("2_bf7wd")
+
+[node name="General" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" index="1" unique_id=1402061007]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/General" index="0" unique_id=658523600]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General" index="0" unique_id=658523600]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/General/ScrollContainer" index="0" unique_id=516305244]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer" index="0" unique_id=516305244]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Project Path" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/General/ScrollContainer/VBoxContainer" index="0" unique_id=1898814299]
+[node name="ProjectPath" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer" index="0" unique_id=1898814299]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/General/ScrollContainer/VBoxContainer/Project Path" index="0" unique_id=1422734491]
+[node name="ProjectPathLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath" index="0" unique_id=1422734491]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "Project Save Path: [color=yellow]user://"
+text = "Default Project Save Path: [color=yellow]path"
 horizontal_alignment = 2
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/General/ScrollContainer/VBoxContainer/Project Path" index="1" unique_id=298292644]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath" index="1" unique_id=298292644]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/General/ScrollContainer/VBoxContainer/Project Path" index="2" unique_id=963564310]
+[node name="ProjectPathButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath" index="2" unique_id=963564310]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Change"
 
-[node name="Audio" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer" index="2" unique_id=902690327]
+[node name="SelectProjectPathWindow" type="FileDialog" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath" index="3" unique_id=1580554836]
+unique_name_in_owner = true
+oversampling_override = 1.0
+title = "Open a Directory"
+initial_position = 4
+file_mode = 2
+access = 2
+
+[node name="Audio" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" index="2" unique_id=902690327]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio" index="0" unique_id=958079009]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio" index="0" unique_id=958079009]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer" index="0" unique_id=144372188]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer" index="0" unique_id=144372188]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Input Device" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer" index="0" unique_id=1586088797]
+[node name="Input Device" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer" index="0" unique_id=1586088797]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer/Input Device" index="0" unique_id=1153914164]
+[node name="InputDeviceLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Input Device" index="0" unique_id=1153914164]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "Input Device: "
+text = "Input Device:"
 fit_content = true
 horizontal_alignment = 2
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer/Input Device" index="1" unique_id=1253644181]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Input Device" index="1" unique_id=1253644181]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer/Input Device" index="2" unique_id=1239446629]
+[node name="InputDeviceOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Input Device" index="2" unique_id=1239446629]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
 
-[node name="Output Device" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer" index="1" unique_id=1692493714]
+[node name="Output Device" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer" index="1" unique_id=1692493714]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer/Output Device" index="0" unique_id=174454978]
+[node name="OutputDeviceLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Output Device" index="0" unique_id=174454978]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "Output Device: "
+text = "Output Device:"
 fit_content = true
 horizontal_alignment = 2
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer/Output Device" index="1" unique_id=244162200]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Output Device" index="1" unique_id=244162200]
 layout_mode = 2
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Audio/ScrollContainer/VBoxContainer/Output Device" index="2" unique_id=329775351]
+[node name="OutputDeviceOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Output Device" index="2" unique_id=329775351]
+unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+fit_to_longest_item = false
 
-[node name="Video" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer" index="3" unique_id=387206290]
+[node name="Video" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" index="3" unique_id=387206290]
 layout_mode = 2
 metadata/_tab_index = 2
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video" index="0" unique_id=1110071383]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video" index="0" unique_id=1110071383]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer" index="0" unique_id=1950202508]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer" index="0" unique_id=1950202508]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="Animation Speed" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer" index="0" unique_id=503723885]
+[node name="Animation Speed" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer" index="0" unique_id=503723885]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="0" unique_id=292760922]
+[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="0" unique_id=292760922]
 layout_mode = 2
 size_flags_horizontal = 3
 bbcode_enabled = true
-text = "Animation Speed: "
+text = "Animation Speed:"
 horizontal_alignment = 2
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="1" unique_id=551821916]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="1" unique_id=551821916]
 layout_mode = 2
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="2" unique_id=1807691046]
+[node name="AnimationSpeedSlider" type="HSlider" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="2" unique_id=1807691046]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_default_cursor_shape = 2
-min_value = 0.25
-max_value = 10.0
-step = 0.25
-value = 1.0
-
-[node name="ValueLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="3" unique_id=615166229]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-bbcode_enabled = true
-text = "10."
-fit_content = true
-
-[node name="Animations Enabled" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer" index="1" unique_id=322866890]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animations Enabled" index="0" unique_id=135375871]
-layout_mode = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "Animations Enabled: "
-horizontal_alignment = 2
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animations Enabled" index="1" unique_id=1582198731]
-layout_mode = 2
-
-[node name="HSlider" type="CheckBox" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animations Enabled" index="2" unique_id=1808445292]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-button_pressed = true
-
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/Animations Enabled" index="3" unique_id=1275007479]
-custom_minimum_size = Vector2(32, 0)
-layout_mode = 2
-
-[node name="UI Scale" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer" index="2" unique_id=1778153916]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/UI Scale" index="0" unique_id=1112624800]
-layout_mode = 2
-size_flags_horizontal = 3
-bbcode_enabled = true
-text = "UI Scale: "
-horizontal_alignment = 2
-
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/UI Scale" index="1" unique_id=1614837442]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/UI Scale" index="2" unique_id=684301758]
-layout_mode = 2
-size_flags_horizontal = 3
-mouse_default_cursor_shape = 2
-min_value = 0.25
+min_value = 0.125
 max_value = 5.0
-step = 0.25
+step = 0.125
 value = 1.0
+script = ExtResource("3_g42fq")
+default_value = 1.0
 
-[node name="ValueLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Video/ScrollContainer/VBoxContainer/UI Scale" index="3" unique_id=230371128]
-custom_minimum_size = Vector2(32, 0)
+[node name="AnimationSpeedValueLabel" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed" index="3" unique_id=615166229]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(48, 0)
 layout_mode = 2
 bbcode_enabled = true
-text = "10."
+text = "val."
 fit_content = true
 
-[node name="Shortcuts" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer" index="4" unique_id=657745816]
+[node name="ReducedMotion" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer" index="1" unique_id=322866890]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/ReducedMotion" index="0" unique_id=135375871]
+layout_mode = 2
+size_flags_horizontal = 3
+bbcode_enabled = true
+text = "Reduced Motion:"
+horizontal_alignment = 2
+
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/ReducedMotion" index="1" unique_id=1582198731]
+layout_mode = 2
+
+[node name="ReducedMotionCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/ReducedMotion" index="2" unique_id=1808445292]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_default_cursor_shape = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/ReducedMotion" index="3" unique_id=1275007479]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer" index="2" unique_id=645542359]
+layout_mode = 2
+
+[node name="Shortcuts" type="MarginContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" index="4" unique_id=657745816]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 3
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts" index="0" unique_id=585680353]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts" index="0" unique_id=585680353]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VSplitContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer" index="0" unique_id=998329365]
+[node name="VBoxContainer" type="VSplitContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer" index="0" unique_id=998329365]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 split_offsets = PackedInt32Array(31, 269)
 split_offset = 31
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer" index="0" unique_id=156108116]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer" index="0" unique_id=156108116]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="0" unique_id=1557841149]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="0" unique_id=1557841149]
 layout_mode = 2
 text = "Preset: "
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="1" unique_id=458644413]
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="1" unique_id=458644413]
 layout_mode = 2
 selected = 0
 item_count = 1
 popup/item_0/text = "GDaw Default"
 popup/item_0/id = 0
 
-[node name="Save As Button" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="2" unique_id=891606333]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="2" unique_id=550345908]
+layout_mode = 2
+
+[node name="Save As Button" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="3" unique_id=891606333]
 layout_mode = 2
 text = "Save As..."
 
-[node name="Delete Button" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="3" unique_id=2106704251]
+[node name="Delete Button" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/HBoxContainer" index="4" unique_id=2106704251]
 layout_mode = 2
 text = "Delete"
 
-[node name="Keys" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer" index="1" unique_id=1966781075]
+[node name="Keys" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer" index="1" unique_id=1966781075]
 layout_mode = 2
 theme_override_constants/separation = 32
 
-[node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys" index="0" unique_id=975283352]
+[node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys" index="0" unique_id=975283352]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="0" unique_id=1951142026]
+[node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="0" unique_id=1951142026]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="F1" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="0" unique_id=145482872]
+[node name="F1" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="0" unique_id=145482872]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F1"
 
-[node name="F2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="1" unique_id=1331923268]
+[node name="F2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="1" unique_id=1331923268]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F2"
 
-[node name="F3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="2" unique_id=172748197]
+[node name="F3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="2" unique_id=172748197]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F3"
 
-[node name="F4" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="3" unique_id=1393288989]
+[node name="F4" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="3" unique_id=1393288989]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F4"
 
-[node name="F5" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="4" unique_id=616857747]
+[node name="F5" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="4" unique_id=616857747]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F5"
 
-[node name="F6" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="5" unique_id=1827701065]
+[node name="F6" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="5" unique_id=1827701065]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F6"
 
-[node name="F7" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="6" unique_id=504194776]
+[node name="F7" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="6" unique_id=504194776]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F7"
 
-[node name="F8" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="7" unique_id=460367281]
+[node name="F8" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="7" unique_id=460367281]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F8"
 
-[node name="F9" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="8" unique_id=314797107]
+[node name="F9" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="8" unique_id=314797107]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F9"
 
-[node name="F10" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="9" unique_id=1945851978]
+[node name="F10" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="9" unique_id=1945851978]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F10"
 
-[node name="F11" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="10" unique_id=716508686]
+[node name="F11" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="10" unique_id=716508686]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F11"
 
-[node name="F12" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="11" unique_id=864601606]
+[node name="F12" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row1" index="11" unique_id=864601606]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F12"
 
-[node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="1" unique_id=650732697]
+[node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="1" unique_id=650732697]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="`" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="0" unique_id=504703616]
+[node name="`" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="0" unique_id=504703616]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "`"
 
-[node name="1" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="1" unique_id=31870300]
+[node name="1" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="1" unique_id=31870300]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "1"
 
-[node name="2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="2" unique_id=1488141395]
+[node name="2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="2" unique_id=1488141395]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "2"
 
-[node name="3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="3" unique_id=1015856896]
+[node name="3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="3" unique_id=1015856896]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "3"
 
-[node name="4" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="4" unique_id=917335687]
+[node name="4" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="4" unique_id=917335687]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "4"
 
-[node name="5" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="5" unique_id=1329565056]
+[node name="5" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="5" unique_id=1329565056]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "5"
 
-[node name="6" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="6" unique_id=1581981960]
+[node name="6" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="6" unique_id=1581981960]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "6"
 
-[node name="7" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="7" unique_id=1355484639]
+[node name="7" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="7" unique_id=1355484639]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "7"
 
-[node name="8" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="8" unique_id=1076782857]
+[node name="8" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="8" unique_id=1076782857]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "8"
 
-[node name="9" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="9" unique_id=526947527]
+[node name="9" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="9" unique_id=526947527]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "9"
 
-[node name="0" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="10" unique_id=1567171644]
+[node name="0" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="10" unique_id=1567171644]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "0"
 
-[node name="-" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="11" unique_id=756353532]
+[node name="-" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="11" unique_id=756353532]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "-"
 
-[node name="=" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="12" unique_id=41250478]
+[node name="=" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="12" unique_id=41250478]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "="
 
-[node name="Backspace" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="13" unique_id=1734185154]
+[node name="Backspace" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row2" index="13" unique_id=1734185154]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Backspace"
 
-[node name="Row3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="2" unique_id=743564170]
+[node name="Row3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="2" unique_id=743564170]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Tab" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="0" unique_id=683531664]
+[node name="Tab" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="0" unique_id=683531664]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Tab"
 
-[node name="Q" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="1" unique_id=296153099]
+[node name="Q" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="1" unique_id=296153099]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Q"
 
-[node name="W" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="2" unique_id=306594934]
+[node name="W" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="2" unique_id=306594934]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "W"
 
-[node name="E" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="3" unique_id=1430405765]
+[node name="E" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="3" unique_id=1430405765]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "E"
 
-[node name="R" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="4" unique_id=572587533]
+[node name="R" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="4" unique_id=572587533]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "R"
 
-[node name="T" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="5" unique_id=2051166013]
+[node name="T" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="5" unique_id=2051166013]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "T"
 
-[node name="Y" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="6" unique_id=1326650775]
+[node name="Y" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="6" unique_id=1326650775]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Y"
 
-[node name="U" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="7" unique_id=1762094291]
+[node name="U" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="7" unique_id=1762094291]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "U"
 
-[node name="I" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="8" unique_id=662173560]
+[node name="I" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="8" unique_id=662173560]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "I"
 
-[node name="O" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="9" unique_id=1132429931]
+[node name="O" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="9" unique_id=1132429931]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "O"
 
-[node name="P" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="10" unique_id=1031987742]
+[node name="P" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="10" unique_id=1031987742]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "P"
 
-[node name="[" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="11" unique_id=1362771740]
+[node name="[" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="11" unique_id=1362771740]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "["
 
-[node name="]" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="12" unique_id=201889746]
+[node name="]" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="12" unique_id=201889746]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "]"
 
-[node name="\\" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="13" unique_id=93968864]
+[node name="\\" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row3" index="13" unique_id=93968864]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "\\"
 
-[node name="Row4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="3" unique_id=568758669]
+[node name="Row4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="3" unique_id=568758669]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CAPS" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="0" unique_id=60404838]
+[node name="CAPS" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="0" unique_id=60404838]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "CAPS"
 
-[node name="A" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="1" unique_id=114118396]
+[node name="A" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="1" unique_id=114118396]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "A"
 
-[node name="S" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="2" unique_id=653161580]
+[node name="S" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="2" unique_id=653161580]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "S"
 
-[node name="D" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="3" unique_id=474775270]
+[node name="D" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="3" unique_id=474775270]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "D"
 
-[node name="F" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="4" unique_id=1183173206]
+[node name="F" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="4" unique_id=1183173206]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "F"
 
-[node name="G" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="5" unique_id=1923692510]
+[node name="G" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="5" unique_id=1923692510]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "G"
 
-[node name="H" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="6" unique_id=1326484819]
+[node name="H" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="6" unique_id=1326484819]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "H"
 
-[node name="J" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="7" unique_id=1695106879]
+[node name="J" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="7" unique_id=1695106879]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "J"
 
-[node name="K" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="8" unique_id=1812400896]
+[node name="K" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="8" unique_id=1812400896]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "K"
 
-[node name="L" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="9" unique_id=788713739]
+[node name="L" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="9" unique_id=788713739]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "L"
 
-[node name=";" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="10" unique_id=1361724346]
+[node name=";" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="10" unique_id=1361724346]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = ";"
 
-[node name="\'" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="11" unique_id=1998515342]
+[node name="\'" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="11" unique_id=1998515342]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "'"
 
-[node name="ENTER" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="12" unique_id=1212787093]
+[node name="ENTER" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row4" index="12" unique_id=1212787093]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Enter"
 
-[node name="Row5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="4" unique_id=1278269783]
+[node name="Row5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="4" unique_id=1278269783]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Shift" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="0" unique_id=1912387008]
+[node name="Shift" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="0" unique_id=1912387008]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Shift"
 
-[node name="Z" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="1" unique_id=412742481]
+[node name="Z" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="1" unique_id=412742481]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Z"
 
-[node name="X" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="2" unique_id=148060184]
+[node name="X" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="2" unique_id=148060184]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "X"
 
-[node name="C" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="3" unique_id=789316592]
+[node name="C" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="3" unique_id=789316592]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "C"
 
-[node name="V" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="4" unique_id=292590998]
+[node name="V" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="4" unique_id=292590998]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "V"
 
-[node name="B" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="5" unique_id=1366078995]
+[node name="B" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="5" unique_id=1366078995]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "B"
 
-[node name="N" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="6" unique_id=1934754525]
+[node name="N" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="6" unique_id=1934754525]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "N"
 
-[node name="M" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="7" unique_id=1498816036]
+[node name="M" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="7" unique_id=1498816036]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "M"
 
-[node name="," type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="8" unique_id=1728500188]
+[node name="," type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="8" unique_id=1728500188]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = ","
 
-[node name="Dot" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="9" unique_id=932526081]
+[node name="Dot" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="9" unique_id=932526081]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "."
 
-[node name="Slash" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="10" unique_id=1910038632]
+[node name="Slash" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="10" unique_id=1910038632]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "/"
 
-[node name="RightShift" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="11" unique_id=1250855373]
+[node name="RightShift" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row5" index="11" unique_id=1250855373]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Shift"
 
-[node name="Row6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="5" unique_id=452392697]
+[node name="Row6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main" index="5" unique_id=452392697]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Ctrl" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="0" unique_id=1903787036]
+[node name="Ctrl" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="0" unique_id=1903787036]
 layout_mode = 2
+focus_mode = 0
 text = "Ctrl"
 
-[node name="Option" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="1" unique_id=85290728]
+[node name="Option" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="1" unique_id=85290728]
 layout_mode = 2
+focus_mode = 0
 text = "Option"
 
-[node name="Cmd" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="2" unique_id=2013077199]
+[node name="Cmd" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="2" unique_id=2013077199]
 layout_mode = 2
+focus_mode = 0
 text = "Cmd"
 
-[node name="Space" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="3" unique_id=1559605799]
+[node name="Space" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="3" unique_id=1559605799]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "_"
 
-[node name="Ctrl2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="4" unique_id=1526970520]
+[node name="Ctrl2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="4" unique_id=1526970520]
 layout_mode = 2
+focus_mode = 0
 text = "Ctrl"
 
-[node name="Option2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="5" unique_id=1587517848]
+[node name="Option2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="5" unique_id=1587517848]
 layout_mode = 2
+focus_mode = 0
 text = "Option"
 
-[node name="Cmd3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="6" unique_id=1177457580]
+[node name="Cmd3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Main/Row6" index="6" unique_id=1177457580]
 layout_mode = 2
+focus_mode = 0
 text = "Cmd"
 
-[node name="Arrows" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys" index="1" unique_id=40492698]
+[node name="Arrows" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys" index="1" unique_id=40492698]
 layout_mode = 2
 
-[node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="0" unique_id=1702980687]
+[node name="Row1" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="0" unique_id=1702980687]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="1" unique_id=1624622075]
+[node name="Row2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="1" unique_id=1624622075]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row2" index="0" unique_id=1063732277]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row2" index="0" unique_id=1063732277]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Home" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row2" index="1" unique_id=601092172]
+[node name="Home" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row2" index="1" unique_id=601092172]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Home"
 
-[node name="Page Up" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row2" index="2" unique_id=1467558760]
+[node name="Page Up" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row2" index="2" unique_id=1467558760]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Page Up"
 
-[node name="Row3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="2" unique_id=1791225108]
+[node name="Row3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="2" unique_id=1791225108]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Tab" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row3" index="0" unique_id=1787509010]
+[node name="Tab" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row3" index="0" unique_id=1787509010]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Delete"
 
-[node name="Q" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row3" index="1" unique_id=194738246]
+[node name="Q" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row3" index="1" unique_id=194738246]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "End"
 
-[node name="W" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row3" index="2" unique_id=1513360891]
+[node name="W" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row3" index="2" unique_id=1513360891]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Page Down"
 
-[node name="Row4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="3" unique_id=608116618]
+[node name="Row4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="3" unique_id=608116618]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Row5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="4" unique_id=10641541]
+[node name="Row5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="4" unique_id=10641541]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row5" index="0" unique_id=1426837860]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row5" index="0" unique_id=1426837860]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Up" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row5" index="1" unique_id=919851195]
+[node name="Up" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row5" index="1" unique_id=919851195]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Up"
 
-[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row5" index="2" unique_id=1956970212]
+[node name="Control2" type="Control" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row5" index="2" unique_id=1956970212]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Row6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="5" unique_id=1483486261]
+[node name="Row6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows" index="5" unique_id=1483486261]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Up" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row6" index="0" unique_id=996796208]
+[node name="Up" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row6" index="0" unique_id=996796208]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Left"
 
-[node name="Up2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row6" index="1" unique_id=89087745]
+[node name="Up2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row6" index="1" unique_id=89087745]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Down"
 
-[node name="Up3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row6" index="2" unique_id=166369186]
+[node name="Up3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Keys/Arrows/Row6" index="2" unique_id=166369186]
 layout_mode = 2
 size_flags_horizontal = 3
+focus_mode = 0
 text = "Right"
 
-[node name="Command Selection" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer" index="2" unique_id=1079534596]
+[node name="Command Selection" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer" index="2" unique_id=1079534596]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection" index="0" unique_id=1372749397]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection" index="0" unique_id=1372749397]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Search" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer" index="0" unique_id=650509454]
+[node name="Search" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer" index="0" unique_id=650509454]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/Search" index="0" unique_id=992980693]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/Search" index="0" unique_id=992980693]
 layout_mode = 2
 
-[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/Search" index="1" unique_id=350395888]
+[node name="LineEdit" type="LineEdit" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/Search" index="1" unique_id=350395888]
 custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
 placeholder_text = "search..."
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer" index="1" unique_id=2147233379]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer" index="1" unique_id=2147233379]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 size_flags_vertical = 3
 scroll_hint_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer" index="0" unique_id=102947308]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer" index="0" unique_id=102947308]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="0" unique_id=846841273]
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="0" unique_id=846841273]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "shortcut"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="1" unique_id=1836020943]
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="1" unique_id=1836020943]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "shortcut"
 
-[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="2" unique_id=436428823]
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="2" unique_id=436428823]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "shortcut"
 
-[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/TabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="3" unique_id=2143360484]
+[node name="Button4" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Shortcuts/ScrollContainer/VBoxContainer/Command Selection/VBoxContainer/ScrollContainer/VBoxContainer" index="3" unique_id=2143360484]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 text = "shortcut"
+
+[node name="SaveMenu" type="HBoxContainer" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer" index="1" unique_id=1592712870]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 2
+
+[node name="CancelButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SaveMenu" index="0" unique_id=1317977714]
+layout_mode = 2
+text = "Cancel"
+
+[node name="ApplyButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SaveMenu" index="1" unique_id=902217592]
+layout_mode = 2
+text = "Apply"
+
+[node name="RefreshTimer" type="Timer" parent="MarginContainer/VBoxContainer/WindowContent" parent_id_path=PackedInt32Array(1096486190) index="1" unique_id=1710242535]
+wait_time = 0.25
+autostart = true
+
+[connection signal="tab_clicked" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_tab_clicked"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath/ProjectPathButton" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_project_path_button_pressed"]
+[connection signal="canceled" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath/SelectProjectPathWindow" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_handle_window_closing"]
+[connection signal="close_requested" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath/SelectProjectPathWindow" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_handle_window_closing"]
+[connection signal="confirmed" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath/SelectProjectPathWindow" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_handle_window_closing"]
+[connection signal="dir_selected" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/General/ScrollContainer/VBoxContainer/ProjectPath/SelectProjectPathWindow" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_select_project_path_window_dir_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Input Device/InputDeviceOptionButton" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_input_device_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Audio/ScrollContainer/VBoxContainer/Output Device/OutputDeviceOptionButton" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_output_device_option_button_item_selected"]
+[connection signal="mouse_entered" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed/AnimationSpeedSlider" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed/AnimationSpeedSlider" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed/AnimationSpeedSlider" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed/AnimationSpeedSlider" method="_on_mouse_exited"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/Animation Speed/AnimationSpeedSlider" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_animation_speed_slider_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer/Video/ScrollContainer/VBoxContainer/ReducedMotion/ReducedMotionCheckBox" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_animations_enabled_check_box_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SaveMenu/CancelButton" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SaveMenu/ApplyButton" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_apply_button_pressed"]
+[connection signal="timeout" from="MarginContainer/VBoxContainer/WindowContent/RefreshTimer" to="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/SettingsTabContainer" method="_on_refresh_timer_timeout"]
