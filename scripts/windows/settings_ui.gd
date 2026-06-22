@@ -105,12 +105,10 @@ func _handle_window_closing():
 
 
 func _on_refresh_timer_timeout() -> void:
-	print(projects_path + Settings.projects_path)
 	if projects_path == Settings.projects_path and input_device == Settings.input_device and output_device == Settings.input_device and animation_speed == Settings.animation_speed and reduced_motion == Settings.reduced_motion:
 		save_menu.hide()
 	else:
 		save_menu.show()
-
 #endregion
 
 

@@ -6,6 +6,7 @@ class_name GDawWindow
 @onready var title_label : RichTextLabel = %TitleLabel
 @onready var top_bar : Control = %TopBar
 @onready var top_bar_panel : Panel = %TopBarPanel
+@onready var window_content : Control = %WindowContent
 
 var touching_window : bool = false
 var touching_top_bar : bool = false
@@ -41,8 +42,8 @@ func _process(delta: float) -> void:
 		close_window()
 	
 	# Clamp window inside of the program
-	global_position.x = clamp(global_position.x, 0, DisplayServer.window_get_size().x)
-	global_position.y = clamp(global_position.y, 0, DisplayServer.window_get_size().y)
+	global_position.x = clamp(global_position.x, 0, DisplayServer.window_get_size().x - size.x)
+	global_position.y = clamp(global_position.y, 0, DisplayServer.window_get_size().y - size.y)
 
 
 func _handle_selection():

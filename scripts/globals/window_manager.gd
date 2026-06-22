@@ -18,6 +18,14 @@ func create_window(_window_packed : PackedScene):
 	get_tree().current_scene.add_child(_window)
 
 
+func _create_exclusive_window(_window, _window_packed):
+	if _window:
+		select_window(_window)
+		_window.show()
+	else:
+		create_window(_window_packed)
+
+
 func open_window(_window : GDawWindow):
 	windows_open.append(_window)
 	select_window(_window)
