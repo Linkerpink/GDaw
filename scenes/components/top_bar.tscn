@@ -69,7 +69,7 @@ script = ExtResource("2_5lbc7")
 [node name="VSeparator" type="VSeparator" parent="MarginContainer/HBoxContainer" unique_id=1256680915]
 layout_mode = 2
 
-[node name="BPMManager" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1278210067]
+[node name="BPMManager" type="HBoxContainer" parent="MarginContainer/HBoxContainer" unique_id=1278210067 groups=["bpm_manager"]]
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("1_tmikl")
@@ -91,6 +91,7 @@ min_value = 1.0
 max_value = 9999.0
 value = 120.0
 allow_greater = true
+select_all_on_focus = true
 
 [node name="Panel" type="Panel" parent="." unique_id=1203056399]
 z_index = -9

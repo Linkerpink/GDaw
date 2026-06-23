@@ -6,7 +6,6 @@
 [node name="TapBPMWindow" unique_id=390925715 instance=ExtResource("1_jgdu2")]
 custom_minimum_size = Vector2(256, 256)
 title = "Tap BPM"
-exclusive = true
 
 [node name="WindowContent" parent="MarginContainer/VBoxContainer" parent_id_path=PackedInt32Array(1701107619) index="1" unique_id=1096486190]
 script = ExtResource("2_tccyd")
@@ -28,4 +27,8 @@ text = "TAP"
 
 [node name="ResetButton" type="Button" parent="MarginContainer/VBoxContainer/WindowContent/VBoxContainer" index="2" unique_id=1057191168]
 layout_mode = 2
+focus_mode = 0
 text = "reset"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/TapButton" to="MarginContainer/VBoxContainer/WindowContent" method="_tap_bpm"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/WindowContent/VBoxContainer/ResetButton" to="MarginContainer/VBoxContainer/WindowContent" method="_on_reset_button_pressed"]
